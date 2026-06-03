@@ -1,0 +1,44 @@
+name: Deploy Filmography to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/tools-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Compilar proyecto con variables de entorno
+        env:
+          VITE_TMDB_BASE_URL: ${{ secrets.VITE_TMDB_BASE_URL }}
+          VITE_TMDB_ACCESS_TOKEN: ${{ secrets.VITE_TMDB_ACCESS_TOKEN }}
+        run: npm run build
+
+      - name: Configurar Pages
+        uses: actions/pages-infrastructure@v4
+
+      - name: Subir artefacto compilado
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
