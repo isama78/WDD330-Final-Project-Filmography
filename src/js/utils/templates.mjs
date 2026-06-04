@@ -1,3 +1,5 @@
+import logoURL from '../../assets/logo.png';
+
 export function movieCardTemplate(movie) {
   const baseURL = "https://image.tmdb.org/t/p/w500";
 
@@ -28,7 +30,7 @@ export function headerTemplate() {
     <div class="header-container">
       <div class="logo">
         <a href="/index.html">
-          <img src="/assets/logo.png" alt="Filmography Logo" class="logo-img">
+          <img src="${logoURL}" alt="Filmography Logo" class="logo-img">
           Filmography
         </a>
       </div>
