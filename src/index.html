@@ -11,10 +11,37 @@
   <body>
     <header></header>
     <main>
-      <section>
-        <h2>Trending Movies</h2>
-        <section id="trending-grid" class="movie-grid"></section>
+      <section class="hero-banner">
+        <h2>Discover your next favorite movie</h2>
       </section>
+
+      <section class="controls-bar">
+        <form id="search-form" class="search-form">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search movie..."
+            required
+          />
+          <button type="submit">🔍</button>
+        </form>
+
+        <div class="filters">
+          <select id="genre-select">
+            <option value="">All Genres</option>
+          </select>
+
+          <select id="sort-select">
+            <option value="trending">Trending Weekly</option>
+            <option value="popularity.desc">Most Popular</option>
+            <option value="vote_average.desc">Top Rated</option>
+            <option value="primary_release_date.desc">Most Recent</option>
+          </select>
+        </div>
+      </section>
+
+      <h2 id="list-heading">Trending Movies</h2>
+      <section id="trending-grid" class="movie-grid"></section>
     </main>
     <footer></footer>
   </body>
