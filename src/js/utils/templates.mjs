@@ -31,14 +31,14 @@ export function headerTemplate() {
   return `
     <div class="header-container">
       <div class="logo">
-        <a href="/index.html">
+        <a href="${baseUrl}index.html">
           <img src="${logoURL}" alt="Filmography Logo" class="logo-img">
           Filmography
         </a>
       </div>
       <nav class="nav-menu">
         <ul>
-          <li><a href="/index.html">Home</a></li>
+          <li><a href="${baseUrl}index.html">Home</a></li>
           <li><a href="${baseUrl}watchlist/index.html">My Watchlist</a></li>
         </ul>
       </nav>
