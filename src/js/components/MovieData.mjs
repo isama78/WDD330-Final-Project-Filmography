@@ -79,7 +79,7 @@ export default class MovieData {
       }
         
       const data = await response.json();
-      console.log("YouTube API response:", data);
+     
       if (data.items && data.items.length > 0) {
         return data.items[0].id.videoId;
       }

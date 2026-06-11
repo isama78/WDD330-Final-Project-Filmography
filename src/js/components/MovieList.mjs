@@ -1,4 +1,5 @@
 import { movieCardTemplate } from "../utils/templates.mjs";
+import { delay, showLoading } from "../utils/utils.mjs";
 
 export default class MovieList {
   constructor(containerElement, dataSource) {
@@ -26,6 +27,11 @@ export default class MovieList {
         this.searchForm.addEventListener("submit", (e) => this.handleSearch(e));
       }
 
+      showLoading(this.containerElement);
+
+      // Function to simulate loading delay
+      await delay(1500);
+      
       const initialMovies = await this.dataSource.getTrendingMovies();
       this.renderList(initialMovies);
     } catch (error) {
@@ -47,6 +53,11 @@ export default class MovieList {
     if (this.searchInput) {
       this.searchInput.value = "";
     }
+
+    showLoading(this.containerElement);
+
+    // Function to simulate loading delay
+    await delay(1500);
 
     const selectedGenre = this.genreSelect.value;
     const selectedSort = this.sortSelect.value;

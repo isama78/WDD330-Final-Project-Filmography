@@ -12,3 +12,11 @@ export function loadHeaderFooter() {
     footerElement.innerHTML = footerTemplate();
   }
 }
+
+export function showLoading(containerElement) {
+  containerElement.innerHTML = `<div class="loading-spinner"></div>`;
+}
+
+export function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
